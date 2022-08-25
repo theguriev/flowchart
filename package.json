@@ -17,15 +17,17 @@
     "next": "12.2.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-flow-renderer": "^10.3.16"
+    "react-flow-renderer": "^10.3.16",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "svg-react-loader": "^0.4.6",
     "@types/node": "18.7.11",
     "@types/react": "18.0.17",
     "@types/react-dom": "18.0.6",
+    "@types/uuid": "^8.3.4",
     "eslint": "8.22.0",
     "eslint-config-next": "12.2.5",
+    "svg-react-loader": "^0.4.6",
     "typescript": "4.7.4"
   }
 }

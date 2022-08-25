@@ -24,7 +24,7 @@ import { MessageNode } from "../MessageNode";
 import { TriggerNode } from "../TriggerNode";
 import { ActionShopifyNode } from "../ActionShopifyNode";
 import { DelayNode } from "../DelayNode";
-import { applyHook } from "utils";
+import { applyHook, createNode, NodeType } from "utils";
 import { FlowProps } from "./types";
 
 const useFlow = ({ initialEdges, initialNodes }: Partial<FlowProps>) => {
@@ -103,7 +103,6 @@ const useFlow = ({ initialEdges, initialNodes }: Partial<FlowProps>) => {
   );
 
   const handleDragOver = useCallback((event: DragEvent<HTMLDivElement>) => {
-    console.log("dragOver Hello");
     event.preventDefault();
     event.dataTransfer.dropEffect = "move";
   }, []);
@@ -116,10 +115,11 @@ const useFlow = ({ initialEdges, initialNodes }: Partial<FlowProps>) => {
       }
       event.preventDefault();
 
-      const type = event.dataTransfer.getData("application/reactflow");
+      const newNode = createNode(
+        event.dataTransfer.getData("application/reactflow") as NodeType
+      );
 
-      // check if the dropped element is valid
-      if (typeof type === "undefined" || !type) {
+      if (!newNode) {
         return;
       }
 
@@ -127,14 +127,8 @@ const useFlow = ({ initialEdges, initialNodes }: Partial<FlowProps>) => {
         x: event.clientX - reactFlowBounds.left,
         y: event.clientY - reactFlowBounds.top,
       });
-      const newNode = {
-        id: "random",
-        type,
-        position,
-        data: { label: `${type} node` },
-      };
 
-      setNodes((nds) => nds.concat(newNode));
+      setNodes((nodes) => nodes.concat({ ...newNode, position } as any));
     },
     [reactFlowInstance, setNodes]
   );
