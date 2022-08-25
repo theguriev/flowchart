@@ -1,4 +1,13 @@
-import { FC, useMemo, ComponentProps, useCallback, useEffect } from "react";
+import {
+  FC,
+  useMemo,
+  ComponentProps,
+  useCallback,
+  useRef,
+  DragEvent,
+  useEffect,
+  useState,
+} from "react";
 import ReactFlow, {
   Background,
   Controls,
@@ -8,8 +17,9 @@ import ReactFlow, {
   addEdge,
   MarkerType,
   OnConnect,
+  ReactFlowInstance,
 } from "react-flow-renderer";
-import { useTheme } from "@mui/material";
+import { useTheme, Box } from "@mui/material";
 import { MessageNode } from "../MessageNode";
 import { TriggerNode } from "../TriggerNode";
 import { ActionShopifyNode } from "../ActionShopifyNode";
@@ -18,7 +28,10 @@ import { applyHook } from "utils";
 import { FlowProps } from "./types";
 
 const useFlow = ({ initialEdges, initialNodes }: Partial<FlowProps>) => {
+  const flowRef = useRef<HTMLDivElement>(null);
   const theme = useTheme();
+  const [reactFlowInstance, setReactFlowInstance] =
+    useState<ReactFlowInstance>();
   const [nodes, setNodes, onNodesChange] = useNodesState(
     initialNodes as NonNullable<typeof initialNodes> & {
       onToggleExpand: () => void;
@@ -89,6 +102,43 @@ const useFlow = ({ initialEdges, initialNodes }: Partial<FlowProps>) => {
     [setEdges, theme]
   );
 
+  const handleDragOver = useCallback((event: DragEvent<HTMLDivElement>) => {
+    console.log("dragOver Hello");
+    event.preventDefault();
+    event.dataTransfer.dropEffect = "move";
+  }, []);
+
+  const handleDrop = useCallback(
+    (event: DragEvent<HTMLDivElement>) => {
+      const reactFlowBounds = flowRef.current?.getBoundingClientRect();
+      if (!reactFlowInstance || !reactFlowBounds) {
+        return null;
+      }
+      event.preventDefault();
+
+      const type = event.dataTransfer.getData("application/reactflow");
+
+      // check if the dropped element is valid
+      if (typeof type === "undefined" || !type) {
+        return;
+      }
+
+      const position = reactFlowInstance.project({
+        x: event.clientX - reactFlowBounds.left,
+        y: event.clientY - reactFlowBounds.top,
+      });
+      const newNode = {
+        id: "random",
+        type,
+        position,
+        data: { label: `${type} node` },
+      };
+
+      setNodes((nds) => nds.concat(newNode));
+    },
+    [reactFlowInstance, setNodes]
+  );
+
   //   useEffect(() => {
   //     localStorage.setItem("nodes", JSON.stringify(nodes));
   //     localStorage.setItem("edges", JSON.stringify(edges));
@@ -104,19 +154,26 @@ const useFlow = ({ initialEdges, initialNodes }: Partial<FlowProps>) => {
     fitView: true,
     minZoom: 0.1,
     nodeTypes,
+    flowRef,
+    onDragOver: handleDragOver,
+    onInit: setReactFlowInstance,
+    onDrop: handleDrop,
   };
 };
 
 const FlowRepresentation: FC<FlowProps> = ({
   initialEdges,
   initialNodes,
+  flowRef,
   ...rest
 }) => (
-  <ReactFlow {...rest}>
-    <Background />
-    <MiniMap />
-    <Controls />
-  </ReactFlow>
+  <Box ref={flowRef} sx={{ width: "100%", height: "100%" }}>
+    <ReactFlow {...rest}>
+      <Background />
+      <MiniMap />
+      <Controls />
+    </ReactFlow>
+  </Box>
 );
 
 export const Flow = applyHook(FlowRepresentation, useFlow as any);
