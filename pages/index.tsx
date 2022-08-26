@@ -3,6 +3,8 @@ import { Box } from "@mui/material";
 import { GetStaticProps } from "next";
 import { Flow, FlowInitialProps, NodesSidebar } from "components";
 
+const edgeType = "smoothstep";
+
 export const getServerSideProps: GetStaticProps<
   FlowInitialProps
 > = async () => {
@@ -14,7 +16,7 @@ export const getServerSideProps: GetStaticProps<
           source: "1-sure!",
           target: "2",
           selected: false,
-          type: "step",
+          type: edgeType,
         },
         {
           source: "1",
@@ -22,7 +24,7 @@ export const getServerSideProps: GetStaticProps<
           target: "2",
           targetHandle: "2-left",
           markerEnd: "arrow",
-          type: "default",
+          type: edgeType,
           style: {
             stroke: "#7986CB",
             strokeWidth: 2,
@@ -42,7 +44,7 @@ export const getServerSideProps: GetStaticProps<
           },
           id: "reactflow__edge-22-get-discount-code-33-left",
           selected: false,
-          type: "default",
+          type: edgeType,
         },
         {
           source: "2",
@@ -56,7 +58,7 @@ export const getServerSideProps: GetStaticProps<
           },
           id: "reactflow__edge-22-learn-more-88-left",
           selected: false,
-          type: "default",
+          type: edgeType,
         },
         {
           source: "2",
@@ -70,7 +72,7 @@ export const getServerSideProps: GetStaticProps<
           },
           id: "reactflow__edge-22-shop-on-wa-55-left",
           selected: false,
-          type: "default",
+          type: edgeType,
         },
         {
           source: "5",
@@ -84,21 +86,7 @@ export const getServerSideProps: GetStaticProps<
           },
           id: "reactflow__edge-55-connectly-hoodie-66-left",
           selected: false,
-          type: "default",
-        },
-        {
-          source: "6",
-          sourceHandle: "6-no,-see-more",
-          target: "5",
-          targetHandle: "5-left",
-          markerEnd: "arrow",
-          style: {
-            stroke: "#7986CB",
-            strokeWidth: 2,
-          },
-          id: "reactflow__edge-66-no,-see-more-55-left",
-          selected: false,
-          type: "default",
+          type: edgeType,
         },
         {
           source: "5",
@@ -112,7 +100,7 @@ export const getServerSideProps: GetStaticProps<
           },
           id: "reactflow__edge-55-connectly-t-shirt-77-left",
           selected: false,
-          type: "default",
+          type: edgeType,
         },
         {
           source: "5",
@@ -126,7 +114,7 @@ export const getServerSideProps: GetStaticProps<
           },
           id: "reactflow__edge-55-connectly-water-bottle-44-left",
           selected: false,
-          type: "default",
+          type: edgeType,
         },
         {
           source: "6",
@@ -140,7 +128,7 @@ export const getServerSideProps: GetStaticProps<
           },
           id: "reactflow__edge-66-buy-now-1010-left",
           selected: false,
-          type: "default",
+          type: edgeType,
         },
         {
           source: "06",
@@ -154,7 +142,7 @@ export const getServerSideProps: GetStaticProps<
           },
           id: "reactflow__edge-0606-left-1010-right",
           selected: false,
-          type: "default",
+          type: edgeType,
         },
         {
           source: "04",
@@ -168,7 +156,7 @@ export const getServerSideProps: GetStaticProps<
           },
           id: "reactflow__edge-0404-left-1010-right",
           selected: false,
-          type: "default",
+          type: edgeType,
         },
         {
           source: "05",
@@ -182,7 +170,7 @@ export const getServerSideProps: GetStaticProps<
           },
           id: "reactflow__edge-0505-left-0606-right",
           selected: false,
-          type: "default",
+          type: edgeType,
         },
         {
           source: "05",
@@ -196,6 +184,35 @@ export const getServerSideProps: GetStaticProps<
           },
           id: "reactflow__edge-0505-right-99-left",
           selected: false,
+          type: edgeType,
+        },
+        {
+          source: "06",
+          sourceHandle: "06-right-shopify",
+          target: "05",
+          targetHandle: "05-left",
+          markerEnd: "arrow",
+          style: {
+            stroke: "#7986CB",
+            strokeWidth: 2,
+          },
+          id: "reactflow__edge-0606-right-shopify-0505-left",
+          selected: false,
+          type: edgeType,
+        },
+        {
+          source: "04",
+          sourceHandle: "04-right-shopify",
+          target: "120",
+          targetHandle: "120-left",
+          markerEnd: "arrow",
+          style: {
+            stroke: "#7986CB",
+            strokeWidth: 2,
+          },
+          id: "reactflow__edge-0404-right-shopify-120120-left",
+          selected: false,
+          type: edgeType,
         },
       ],
       initialNodes: [
@@ -359,7 +376,7 @@ export const getServerSideProps: GetStaticProps<
                 title: "Buy now",
               },
               {
-                title: "No, see more",
+                title: "Add to cart",
               },
             ],
             expand: true,
@@ -392,15 +409,15 @@ export const getServerSideProps: GetStaticProps<
             ],
           },
           position: {
-            x: 1444.2069750379808,
-            y: 482.25266686945554,
+            x: 1605.4712449668898,
+            y: 418.89884654024127,
           },
           width: 324,
           height: 56,
           selected: false,
           positionAbsolute: {
-            x: 1444.2069750379808,
-            y: 482.25266686945554,
+            x: 1605.4712449668898,
+            y: 418.89884654024127,
           },
           dragging: false,
         },
@@ -409,7 +426,7 @@ export const getServerSideProps: GetStaticProps<
           type: "message",
           data: {
             content:
-              "Awesome! Enter “Connectly15” at checkout for 15% off your next order.",
+              "Connectly is the best choice when it comes to building workflows that help you sell to your customers. \n              The merch store allows you to proudly represent Connectly.",
             title: "Message",
             buttons: [
               {
@@ -417,14 +434,14 @@ export const getServerSideProps: GetStaticProps<
                 value: "https://google.com",
               },
             ],
-            expand: false,
+            expand: true,
           },
           position: {
             x: 497.077305180272,
             y: 554.728676389002,
           },
           width: 324,
-          height: 56,
+          height: 307,
           selected: false,
           positionAbsolute: {
             x: 497.077305180272,
@@ -443,15 +460,15 @@ export const getServerSideProps: GetStaticProps<
             expand: true,
           },
           position: {
-            x: 3406.00077816934,
-            y: 235.1753616891839,
+            x: 3344.3139485699758,
+            y: -79.42746926757248,
           },
           width: 324,
           height: 342,
           selected: false,
           positionAbsolute: {
-            x: 3406.00077816934,
-            y: 235.1753616891839,
+            x: 3344.3139485699758,
+            y: -79.42746926757248,
           },
           dragging: false,
         },
@@ -507,15 +524,15 @@ export const getServerSideProps: GetStaticProps<
             content: "3 days",
           },
           position: {
-            x: 3009.2427775609726,
-            y: 383.6346145119503,
+            x: 2970.1744521480423,
+            y: 64.9193282485697,
           },
           width: 157,
           height: 56,
           selected: false,
           positionAbsolute: {
-            x: 3009.2427775609726,
-            y: 383.6346145119503,
+            x: 2970.1744521480423,
+            y: 64.9193282485697,
           },
           dragging: false,
         },
@@ -539,6 +556,27 @@ export const getServerSideProps: GetStaticProps<
           positionAbsolute: {
             x: 2084.960786472153,
             y: 195.64299286034026,
+          },
+          dragging: false,
+        },
+        {
+          id: "120",
+          type: "message",
+          data: {
+            content: "Thank you! Your order has been placed.",
+            title: "Message",
+            expand: true,
+          },
+          position: {
+            x: 2954.6355758220648,
+            y: 497.5914301885434,
+          },
+          width: 324,
+          height: 193,
+          selected: false,
+          positionAbsolute: {
+            x: 2954.6355758220648,
+            y: 497.5914301885434,
           },
           dragging: false,
         },

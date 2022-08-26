@@ -133,10 +133,10 @@ const useFlow = ({ initialEdges, initialNodes }: Partial<FlowProps>) => {
     [reactFlowInstance, setNodes]
   );
 
-  //   useEffect(() => {
-  //     localStorage.setItem("nodes", JSON.stringify(nodes));
-  //     localStorage.setItem("edges", JSON.stringify(edges));
-  //   }, [nodes, edges]);
+  useEffect(() => {
+    localStorage.setItem("nodes", JSON.stringify(nodes));
+    localStorage.setItem("edges", JSON.stringify(edges));
+  }, [nodes, edges]);
 
   return {
     nodes,
@@ -145,7 +145,6 @@ const useFlow = ({ initialEdges, initialNodes }: Partial<FlowProps>) => {
     onNodesChange,
     onConnect: handleConnect,
     selectNodesOnDrag: false,
-    fitView: true,
     minZoom: 0.1,
     nodeTypes,
     flowRef,

@@ -28,7 +28,7 @@ export const NodesSidebar = () => {
       <Typography variant="h5" gutterBottom>
         Build campaign
       </Typography>
-      <Button>
+      <Button size="large" sx={{ background: "#F6F8FF" }}>
         <HighlightIcon />
         Tips
       </Button>

@@ -73,9 +73,9 @@ export const ActionShopifyNode: FC<ActionShopifyNodeProps> = ({
         </Box>
       </Collapse>
       <Handle
-        type="target"
+        type="source"
         position={Position.Right}
-        id={`${id}-right`}
+        id={`${id}-right-shopify`}
         style={{ background: theme.palette.connectionLine }}
       />
     </Card>

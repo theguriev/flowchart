@@ -12,7 +12,7 @@ export const DelayNode: FC<DelayNodeProps> = ({
   return (
     <Card sx={{ padding: 1.5 }}>
       <Handle
-        type="source"
+        type="target"
         position={Position.Left}
         id={`${id}-left`}
         style={{ background: theme.palette.connectionLine }}
