@@ -121,7 +121,7 @@ export const MessageNode: FC<MessageNodeProps> = ({
           ))}
           {!buttons.length && (
             <Handle
-              type="target"
+              type="source"
               position={Position.Right}
               id={`${id}-right`}
               style={{ background: theme.palette.connectionLine }}

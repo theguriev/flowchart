@@ -18,6 +18,9 @@ import ReactFlow, {
   MarkerType,
   OnConnect,
   ReactFlowInstance,
+  OnEdgeUpdateFunc,
+  updateEdge,
+  Edge,
 } from "react-flow-renderer";
 import { useTheme, Box } from "@mui/material";
 import { MessageNode } from "../MessageNode";
@@ -28,6 +31,7 @@ import { applyHook, createNode, NodeType } from "utils";
 import { FlowProps } from "./types";
 
 const useFlow = ({ initialEdges, initialNodes }: Partial<FlowProps>) => {
+  const edgeUpdateSuccessful = useRef(true);
   const flowRef = useRef<HTMLDivElement>(null);
   const theme = useTheme();
   const [reactFlowInstance, setReactFlowInstance] =
@@ -88,16 +92,18 @@ const useFlow = ({ initialEdges, initialNodes }: Partial<FlowProps>) => {
 
   const handleConnect: OnConnect = useCallback(
     (params) => {
-      setEdges((eds) =>
-        addEdge(
+      setEdges((edges) => {
+        const newEdges = addEdge(
           {
             ...params,
             markerEnd: MarkerType.Arrow,
             style: { stroke: theme.palette.connectionLine, strokeWidth: 2 },
           },
-          eds
-        )
-      );
+          edges
+        );
+        console.log("newEdges", newEdges);
+        return newEdges;
+      });
     },
     [setEdges, theme]
   );
@@ -133,6 +139,29 @@ const useFlow = ({ initialEdges, initialNodes }: Partial<FlowProps>) => {
     [reactFlowInstance, setNodes]
   );
 
+  const handleEdgeUpdateStart = useCallback(() => {
+    edgeUpdateSuccessful.current = false;
+  }, []);
+
+  const handleEdgeUpdate: OnEdgeUpdateFunc = useCallback(
+    (oldEdge, newConnection) => {
+      edgeUpdateSuccessful.current = true;
+      setEdges((els) => updateEdge(oldEdge, newConnection, els));
+    },
+    [setEdges]
+  );
+
+  const handleEdgeUpdateEnd = useCallback(
+    (_event: MouseEvent, edge: Edge) => {
+      if (!edgeUpdateSuccessful.current) {
+        setEdges((eds) => eds.filter((e) => e.id !== edge.id));
+      }
+
+      edgeUpdateSuccessful.current = true;
+    },
+    [setEdges]
+  );
+
   useEffect(() => {
     localStorage.setItem("nodes", JSON.stringify(nodes));
     localStorage.setItem("edges", JSON.stringify(edges));
@@ -151,6 +180,10 @@ const useFlow = ({ initialEdges, initialNodes }: Partial<FlowProps>) => {
     onDragOver: handleDragOver,
     onInit: setReactFlowInstance,
     onDrop: handleDrop,
+    snapToGrid: true,
+    onEdgeUpdateStart: handleEdgeUpdateStart,
+    onEdgeUpdate: handleEdgeUpdate,
+    onEdgeUpdateEnd: handleEdgeUpdateEnd,
   };
 };
 

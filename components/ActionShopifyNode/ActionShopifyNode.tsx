@@ -21,7 +21,7 @@ export const ActionShopifyNode: FC<ActionShopifyNodeProps> = ({
       }}
     >
       <Handle
-        type="source"
+        type="target"
         position={Position.Left}
         id={`${id}-left`}
         style={{ background: theme.palette.connectionLine }}

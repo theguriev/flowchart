@@ -1,7 +1,12 @@
 import type { NextPage } from "next";
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import { GetStaticProps } from "next";
 import { Flow, FlowInitialProps, NodesSidebar } from "components";
+import ConnectlyWhiteIcon from "!svg-react-loader!/public/images/connectly-white.svg";
+import UserIcon from "!svg-react-loader!/public/images/user.svg";
+import BrickIcon from "!svg-react-loader!/public/images/brick.svg";
+import BubleIcon from "!svg-react-loader!/public/images/buble.svg";
+import RuporIcon from "!svg-react-loader!/public/images/rupor.svg";
 
 const edgeType = "smoothstep";
 
@@ -12,25 +17,18 @@ export const getServerSideProps: GetStaticProps<
     props: {
       initialEdges: [
         {
-          id: "1-sure!-2",
-          source: "1-sure!",
-          target: "2",
-          selected: false,
-          type: edgeType,
-        },
-        {
           source: "1",
           sourceHandle: "1",
           target: "2",
           targetHandle: "2-left",
           markerEnd: "arrow",
-          type: edgeType,
           style: {
             stroke: "#7986CB",
             strokeWidth: 2,
           },
           id: "reactflow__edge-11-22-left",
           selected: false,
+          type: "smoothstep",
         },
         {
           source: "2",
@@ -44,7 +42,7 @@ export const getServerSideProps: GetStaticProps<
           },
           id: "reactflow__edge-22-get-discount-code-33-left",
           selected: false,
-          type: edgeType,
+          type: "smoothstep",
         },
         {
           source: "2",
@@ -58,7 +56,7 @@ export const getServerSideProps: GetStaticProps<
           },
           id: "reactflow__edge-22-learn-more-88-left",
           selected: false,
-          type: edgeType,
+          type: "smoothstep",
         },
         {
           source: "2",
@@ -72,21 +70,7 @@ export const getServerSideProps: GetStaticProps<
           },
           id: "reactflow__edge-22-shop-on-wa-55-left",
           selected: false,
-          type: edgeType,
-        },
-        {
-          source: "5",
-          sourceHandle: "5-connectly-hoodie",
-          target: "6",
-          targetHandle: "6-left",
-          markerEnd: "arrow",
-          style: {
-            stroke: "#7986CB",
-            strokeWidth: 2,
-          },
-          id: "reactflow__edge-55-connectly-hoodie-66-left",
-          selected: false,
-          type: edgeType,
+          type: "smoothstep",
         },
         {
           source: "5",
@@ -100,7 +84,7 @@ export const getServerSideProps: GetStaticProps<
           },
           id: "reactflow__edge-55-connectly-t-shirt-77-left",
           selected: false,
-          type: edgeType,
+          type: "smoothstep",
         },
         {
           source: "5",
@@ -114,7 +98,21 @@ export const getServerSideProps: GetStaticProps<
           },
           id: "reactflow__edge-55-connectly-water-bottle-44-left",
           selected: false,
-          type: edgeType,
+          type: "smoothstep",
+        },
+        {
+          source: "5",
+          sourceHandle: "5-connectly-hoodie",
+          target: "6",
+          targetHandle: "6-left",
+          markerEnd: "arrow",
+          style: {
+            stroke: "#7986CB",
+            strokeWidth: 2,
+          },
+          id: "reactflow__edge-55-connectly-hoodie-66-left",
+          selected: false,
+          type: "smoothstep",
         },
         {
           source: "6",
@@ -128,63 +126,63 @@ export const getServerSideProps: GetStaticProps<
           },
           id: "reactflow__edge-66-buy-now-1010-left",
           selected: false,
-          type: edgeType,
+          type: "smoothstep",
         },
         {
-          source: "06",
-          sourceHandle: "06-left",
-          target: "10",
-          targetHandle: "10-right",
+          source: "6",
+          sourceHandle: "6-add-to-cart",
+          target: "66",
+          targetHandle: "66-left",
           markerEnd: "arrow",
           style: {
             stroke: "#7986CB",
             strokeWidth: 2,
           },
-          id: "reactflow__edge-0606-left-1010-right",
+          id: "reactflow__edge-66-add-to-cart-6666-left",
           selected: false,
-          type: edgeType,
+          type: "smoothstep",
         },
         {
-          source: "04",
-          sourceHandle: "04-left",
-          target: "10",
-          targetHandle: "10-right",
+          source: "66",
+          sourceHandle: "66-empty-cart",
+          target: "666",
+          targetHandle: "666-left",
           markerEnd: "arrow",
           style: {
             stroke: "#7986CB",
             strokeWidth: 2,
           },
-          id: "reactflow__edge-0404-left-1010-right",
+          id: "reactflow__edge-6666-empty-cart-666666-left",
           selected: false,
-          type: edgeType,
+          type: "smoothstep",
         },
         {
-          source: "05",
-          sourceHandle: "05-left",
+          source: "A902",
+          sourceHandle: "A902-pay-now",
           target: "06",
-          targetHandle: "06-right",
+          targetHandle: "06-left",
           markerEnd: "arrow",
           style: {
             stroke: "#7986CB",
             strokeWidth: 2,
           },
-          id: "reactflow__edge-0505-left-0606-right",
+          id: "reactflow__edge-A902A902-pay-now-0606-left",
           selected: false,
-          type: edgeType,
+          type: "smoothstep",
         },
         {
-          source: "05",
-          sourceHandle: "05-right",
-          target: "9",
-          targetHandle: "9-left",
+          source: "A902",
+          sourceHandle: "A902-pay-now",
+          target: "04",
+          targetHandle: "04-left",
           markerEnd: "arrow",
           style: {
             stroke: "#7986CB",
             strokeWidth: 2,
           },
-          id: "reactflow__edge-0505-right-99-left",
+          id: "reactflow__edge-A902A902-pay-now-0404-left",
           selected: false,
-          type: edgeType,
+          type: "smoothstep",
         },
         {
           source: "06",
@@ -198,7 +196,21 @@ export const getServerSideProps: GetStaticProps<
           },
           id: "reactflow__edge-0606-right-shopify-0505-left",
           selected: false,
-          type: edgeType,
+          type: "smoothstep",
+        },
+        {
+          source: "05",
+          sourceHandle: "05-right",
+          target: "9",
+          targetHandle: "9-left",
+          markerEnd: "arrow",
+          style: {
+            stroke: "#7986CB",
+            strokeWidth: 2,
+          },
+          id: "reactflow__edge-0505-right-99-left",
+          selected: false,
+          type: "smoothstep",
         },
         {
           source: "04",
@@ -211,8 +223,20 @@ export const getServerSideProps: GetStaticProps<
             strokeWidth: 2,
           },
           id: "reactflow__edge-0404-right-shopify-120120-left",
-          selected: false,
-          type: edgeType,
+          type: "smoothstep",
+        },
+        {
+          source: "10",
+          sourceHandle: "10-right",
+          target: "A902",
+          targetHandle: "A902-left",
+          markerEnd: "arrow",
+          style: {
+            stroke: "#7986CB",
+            strokeWidth: 2,
+          },
+          id: "reactflow__edge-1010-right-A902A902-left",
+          type: "smoothstep",
         },
       ],
       initialNodes: [
@@ -227,15 +251,15 @@ export const getServerSideProps: GetStaticProps<
             expand: true,
           },
           position: {
-            x: -403.5595984611108,
-            y: 281.66812790551,
+            x: -391.7051640880354,
+            y: 205.46104979288256,
           },
           width: 324,
           height: 117,
           selected: false,
           positionAbsolute: {
-            x: -403.5595984611108,
-            y: 281.66812790551,
+            x: -391.7051640880354,
+            y: 205.46104979288256,
           },
           dragging: false,
         },
@@ -257,7 +281,7 @@ export const getServerSideProps: GetStaticProps<
                 title: "Learn more",
               },
             ],
-            headerImage: "https://picsum.photos/200/100",
+            headerImage: "/images/header-image-2.png",
             expand: true,
           },
           position: {
@@ -290,15 +314,15 @@ export const getServerSideProps: GetStaticProps<
             expand: true,
           },
           position: {
-            x: 516.843489594694,
-            y: 7.864240923333579,
+            x: 516.8434895946942,
+            y: 26.492637795309175,
           },
           width: 324,
           height: 256,
           selected: false,
           positionAbsolute: {
-            x: 516.843489594694,
-            y: 7.864240923333579,
+            x: 516.8434895946942,
+            y: 26.492637795309175,
           },
           dragging: false,
         },
@@ -335,7 +359,7 @@ export const getServerSideProps: GetStaticProps<
           data: {
             content:
               "We have three exciting products for you to purchase here on WhatsApp.\n\n            Connectly Hoodie\n            Connectly T-shirt\n            Connectly Water Bottle",
-            headerImage: "https://picsum.photos/200/100",
+            headerImage: "/images/header-image-1.png",
             title: "Message",
             buttons: [
               {
@@ -369,7 +393,7 @@ export const getServerSideProps: GetStaticProps<
           data: {
             content:
               "Great choice on the sweatshirt. It’s sooo warm and comes in a luxurious black. It’s a 100% organic cotton.",
-            headerImage: "https://picsum.photos/200/100",
+            headerImage: "/images/header-image.png",
             title: "Message",
             buttons: [
               {
@@ -391,6 +415,92 @@ export const getServerSideProps: GetStaticProps<
           positionAbsolute: {
             x: 1491.9752540395002,
             y: -191.44478525541916,
+          },
+          dragging: false,
+        },
+        {
+          id: "66",
+          type: "message",
+          data: {
+            content:
+              "You have {#} items with total of ${#} in your cart. Continue shopping or checkout?",
+            headerImage: "/images/header-image.png",
+            title: "Message",
+            buttons: [
+              {
+                title: "Continue Shopping",
+              },
+              {
+                title: "Checkout",
+              },
+              {
+                title: "Empty Cart",
+              },
+            ],
+            expand: true,
+          },
+          position: {
+            x: 1962.2705205891434,
+            y: 92.16839075543422,
+          },
+          width: 324,
+          height: 456,
+          selected: false,
+          positionAbsolute: {
+            x: 1962.2705205891434,
+            y: 92.16839075543422,
+          },
+          dragging: false,
+        },
+        {
+          id: "666",
+          type: "message",
+          data: {
+            content: "Your cart has been emptyed.",
+            title: "Message",
+            buttons: [
+              {
+                title: "Continue Shopping",
+              },
+            ],
+            expand: true,
+          },
+          position: {
+            x: 2450.5159881521317,
+            y: 388.3467074756295,
+          },
+          width: 324,
+          height: 212,
+          selected: false,
+          positionAbsolute: {
+            x: 2450.5159881521317,
+            y: 388.3467074756295,
+          },
+          dragging: false,
+        },
+        {
+          id: "A902",
+          type: "message",
+          data: {
+            content: "Follow the link below to finalize your payment:",
+            title: "Message",
+            buttons: [
+              {
+                title: "Pay Now",
+              },
+            ],
+            expand: true,
+          },
+          position: {
+            x: 2451.0651895607707,
+            y: -72.25469066316799,
+          },
+          width: 324,
+          height: 231,
+          selected: false,
+          positionAbsolute: {
+            x: 2451.0651895607707,
+            y: -72.25469066316799,
           },
           dragging: false,
         },
@@ -455,20 +565,20 @@ export const getServerSideProps: GetStaticProps<
           data: {
             content:
               "While we create your payment link here is a video we think you will enjoy",
-            headerImage: "https://picsum.photos/200/100",
+            headerImage: "/images/header-image-1.png",
             title: "Message",
             expand: true,
           },
           position: {
-            x: 3344.3139485699758,
-            y: -79.42746926757248,
+            x: 3693.447431584487,
+            y: -226.05510495674622,
           },
           width: 324,
           height: 342,
           selected: false,
           positionAbsolute: {
-            x: 3344.3139485699758,
-            y: -79.42746926757248,
+            x: 3693.447431584487,
+            y: -226.05510495674622,
           },
           dragging: false,
         },
@@ -482,15 +592,15 @@ export const getServerSideProps: GetStaticProps<
             expand: true,
           },
           position: {
-            x: 2520.5078174106793,
-            y: 514.2400993468707,
+            x: 2943.2437272030274,
+            y: 278.48733059500194,
           },
           width: 324,
           height: 168,
           selected: false,
           positionAbsolute: {
-            x: 2520.5078174106793,
-            y: 514.2400993468707,
+            x: 2943.2437272030274,
+            y: 278.48733059500194,
           },
           dragging: false,
         },
@@ -504,15 +614,15 @@ export const getServerSideProps: GetStaticProps<
             expand: true,
           },
           position: {
-            x: 2515.5662713070733,
-            y: 87.61995240226788,
+            x: 2941.591844116149,
+            y: -15.439468526599207,
           },
           width: 324,
           height: 168,
           selected: false,
           positionAbsolute: {
-            x: 2515.5662713070733,
-            y: 87.61995240226788,
+            x: 2941.591844116149,
+            y: -15.439468526599207,
           },
           dragging: false,
         },
@@ -524,15 +634,15 @@ export const getServerSideProps: GetStaticProps<
             content: "3 days",
           },
           position: {
-            x: 2970.1744521480423,
-            y: 64.9193282485697,
+            x: 3450.7989575496445,
+            y: -87.00495263126555,
           },
           width: 157,
           height: 56,
           selected: false,
           positionAbsolute: {
-            x: 2970.1744521480423,
-            y: 64.9193282485697,
+            x: 3450.7989575496445,
+            y: -87.00495263126555,
           },
           dragging: false,
         },
@@ -542,20 +652,20 @@ export const getServerSideProps: GetStaticProps<
           data: {
             content:
               "While we create your payment link here is a video we think you will enjoy",
-            headerImage: "https://picsum.photos/200/100",
+            headerImage: "/images/video-cover.png",
             title: "Message",
             expand: true,
           },
           position: {
-            x: 2084.960786472153,
-            y: 195.64299286034026,
+            x: 1962.8994195814062,
+            y: -296.1925149053171,
           },
           width: 324,
           height: 342,
           selected: false,
           positionAbsolute: {
-            x: 2084.960786472153,
-            y: 195.64299286034026,
+            x: 1962.8994195814062,
+            y: -296.1925149053171,
           },
           dragging: false,
         },
@@ -568,15 +678,15 @@ export const getServerSideProps: GetStaticProps<
             expand: true,
           },
           position: {
-            x: 2954.6355758220648,
-            y: 497.5914301885434,
+            x: 3581.751103610758,
+            y: 278.16520020026235,
           },
           width: 324,
           height: 193,
           selected: false,
           positionAbsolute: {
-            x: 2954.6355758220648,
-            y: 497.5914301885434,
+            x: 3581.751103610758,
+            y: 278.16520020026235,
           },
           dragging: false,
         },
@@ -595,12 +705,132 @@ const FlowChart: NextPage<FlowInitialProps> = ({
         width: "100%",
         height: "100%",
         display: "flex",
-        background:
-          "linear-gradient(180deg, rgba(121, 134, 203, 0.2) 0%, rgba(255, 255, 255, 0) 41.15%), #FFFFFF;",
       }}
     >
-      <NodesSidebar />
-      <Flow initialEdges={initialEdges} initialNodes={initialNodes} />
+      <Box
+        sx={{
+          background: "#20232a",
+          width: "56px",
+        }}
+      >
+        <Box
+          sx={{
+            display: "flex",
+            height: 48,
+            justifyContent: "center",
+            alignItems: "center",
+            cursor: "pointer",
+            borderBottom: "1px solid #616161",
+            "& > svg": {
+              width: 24,
+              height: 24,
+              fill: "#fff",
+            },
+          }}
+        >
+          <ConnectlyWhiteIcon />
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            height: 48,
+            justifyContent: "center",
+            alignItems: "center",
+            cursor: "pointer",
+            borderBottom: "1px solid #616161",
+            "& > svg": {
+              width: 24,
+              height: 24,
+              fill: "#fff",
+            },
+          }}
+        >
+          <UserIcon />
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            height: 48,
+            justifyContent: "center",
+            alignItems: "center",
+            cursor: "pointer",
+            "& > svg": {
+              width: 24,
+              height: 24,
+              fill: "#fff",
+            },
+          }}
+        >
+          <BrickIcon />
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            height: 48,
+            justifyContent: "center",
+            alignItems: "center",
+            cursor: "pointer",
+            "& > svg": {
+              width: 24,
+              height: 24,
+              fill: "#fff",
+            },
+          }}
+        >
+          <BubleIcon />
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            height: 48,
+            justifyContent: "center",
+            alignItems: "center",
+            cursor: "pointer",
+            "& > svg": {
+              width: 24,
+              height: 24,
+              fill: "#fff",
+            },
+          }}
+        >
+          <RuporIcon />
+        </Box>
+      </Box>
+      <Box
+        sx={{
+          flex: 1,
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <Box
+          sx={{
+            display: "flex",
+            flex: 1,
+            background:
+              "linear-gradient(180deg, rgba(121, 134, 203, 0.2) 0%, rgba(255, 255, 255, 0) 41.15%), #FFFFFF;",
+          }}
+        >
+          <NodesSidebar />
+          <Flow initialEdges={initialEdges} initialNodes={initialNodes} />
+        </Box>
+        <Box
+          sx={{
+            height: 70,
+            width: "100%",
+            background: "#fff",
+            boxShadow: "0px -4px 4px rgba(0, 0, 0, 0.15)",
+            display: "flex",
+            justifyContent: "flex-end",
+            boxSizing: "border-box",
+            padding: "19px 24px",
+            gap: 1,
+          }}
+        >
+          <Button>Cancel</Button>
+          <Button variant="contained">Next</Button>
+        </Box>
+      </Box>
     </Box>
   );
 };
